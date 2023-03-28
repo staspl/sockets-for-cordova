@@ -90,10 +90,12 @@ public class SocketPlugin extends CordovaPlugin {
 		for(int i = 0; i < dataBuffer.length; i++) {
 			dataBuffer[i] = (byte) data.getInt(i);
 		}
+		showToast("Test 01");
 		SocketAdapter socket = this.getSocketAdapter(socketKey);
 		
 		try {
 			// socket.write(dataBuffer);
+			showToast("Test 02");
 			socket.write(new byte[0]);
 			// socket.write(dataBuffer);
 			showToast("Test 1");
