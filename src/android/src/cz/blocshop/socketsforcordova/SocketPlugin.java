@@ -31,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.widget.Toast;
 
 public class SocketPlugin extends CordovaPlugin {
 	
@@ -72,6 +73,8 @@ public class SocketPlugin extends CordovaPlugin {
 	}
 	
 	private void write(CordovaArgs args, CallbackContext callbackContext) throws JSONException {
+		Toast.makeText(webView.getContext(), "Test 0", Toast.LENGTH_LONG).show();
+		/*
 		String socketKey = args.getString(0);
 		JSONArray data = args.getJSONArray(1);
 		
@@ -79,13 +82,17 @@ public class SocketPlugin extends CordovaPlugin {
 		for(int i = 0; i < dataBuffer.length; i++) {
 			dataBuffer[i] = (byte) data.getInt(i);
 		}
-		
+		*/
 		SocketAdapter socket = this.getSocketAdapter(socketKey);
 		
 		try {
-			socket.write(dataBuffer);
+			// socket.write(dataBuffer);
+			socket.write(new byte[0]);
+			// socket.write(dataBuffer);
+			Toast.makeText(webView.getContext(), "Test 1", Toast.LENGTH_LONG).show();
 			callbackContext.success();
 		} catch (IOException e) {
+			Toast.makeText(webView.getContext(), "Test ERR:" + e.toString(), Toast.LENGTH_LONG).show();
 			callbackContext.error(e.toString());
 		}
 	}
