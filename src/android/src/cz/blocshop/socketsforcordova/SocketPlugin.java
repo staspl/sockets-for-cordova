@@ -83,8 +83,11 @@ public class SocketPlugin extends CordovaPlugin {
 	}
 	
 	private void write(CordovaArgs args, CallbackContext callbackContext) throws JSONException {
+		try {
 		showToast("Test 0");
+		showToast("Test 00");
 		String socketKey = args.getString(0);
+		showToast("Test 001");
 		JSONArray data = args.getJSONArray(1);
 		byte[] dataBuffer = new byte[data.length()];
 		for(int i = 0; i < dataBuffer.length; i++) {
@@ -93,7 +96,6 @@ public class SocketPlugin extends CordovaPlugin {
 		showToast("Test 01");
 		SocketAdapter socket = this.getSocketAdapter(socketKey);
 		
-		try {
 			// socket.write(dataBuffer);
 			showToast("Test 02");
 			socket.write(new byte[0]);
