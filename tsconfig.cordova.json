@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig-cordovalib.tmp.json",
+  "compilerOptions": {
+    "module": "commonjs"
+  }
+}

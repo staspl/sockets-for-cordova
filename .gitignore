@@ -1,0 +1,11 @@
+node_modules
+dist
+npm-debug.log
+*.tgz
+src/**/*.js
+tests/**/*.js
+
+.nycoutput
+test-reports
+*.tmp.json
+tmp

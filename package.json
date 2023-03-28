@@ -1,0 +1,50 @@
+{
+    "name": "@iotize/device-com-socket.cordova",
+    "version": "3.1.0",
+    "description": "IoTize tap device communication with Socket",
+    "main": "dist/index.js",
+    "cordova": {
+        "id": "cordova-plugin-iotize-device-com-socket",
+        "platforms": [
+            "android",
+            "ios"
+        ]
+    },
+    "private": false,
+    "scripts": {
+        "test": "idtg project build",
+        "build": "idtg project build",
+        "cordova-test": "idtg project cordova-test",
+        "unit-test": "idtg project unit-test",
+        "coverage": "idtg project coverage"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/iotize-sas/device-com-socket.cordova.git"
+    },
+    "keywords": [
+        "iotize",
+        "tap",
+        "socket",
+        "cordova"
+    ],
+    "author": "IoTize <contact@iotize.com>",
+    "license": "Copyright (c) 2015, Blocshop s.r.o.",
+    "bugs": {
+        "url": "https://github.com/iotize-sas/device-com-socket.cordova/issues"
+    },
+    "homepage": "https://github.com/iotize-sas/device-com-socket.cordova#readme",
+    "peerDependencies": {
+        "@iotize/common": "^2.0.0",
+        "@iotize/tap": "^2.0.0",
+        "rxjs": "^6.5.4"
+    },
+    "devDependencies": {
+        "@iotize/common": "^2.0.0-alpha.2",
+        "@iotize/tap": "^2.7.0",
+        "@types/jasmine": "^3.9.1",
+        "@types/node": "^16.10.2",
+        "rxjs": "^6.6.7",
+        "ts-loader": "^9.2.6"
+    }
+}

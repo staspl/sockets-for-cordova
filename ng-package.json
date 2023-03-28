@@ -1,0 +1,6 @@
+{
+    "dest": "./dist/@iotize/device-com-socket.cordova",
+    "lib": {
+        "entryFile": "src/public_api.ts"
+    }
+}

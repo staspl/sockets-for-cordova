@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "defaultProject": "lib",
+    "projects": {
+        "lib": {
+            "projectType": "library",
+            "sourceRoot": "src",
+            "root": ".",
+            "architect": {
+                "build": {
+                    "builder": "@iotize-private/dev-tools-cli:cordova-lib"
+                },
+                "test": {
+                    "builder": "@iotize-private/dev-tools-cli:run-builders",
+                    "options": {
+                        "builders": [
+                            "lib:unit-test",
+                            "lib:cordova-test"
+                        ]
+                    }
+                },
+                "unit-test": {
+                    "builder": "@iotize-private/dev-tools-cli:mocha",
+                    "options": {
+                        "require": [
+                            "ts-node/register",
+                            "test/bootstrap.ts"
+                        ]
+                    }
+                },
+                "cordova-test": {
+                    "builder": "@iotize-private/dev-tools-cli:cordova-plugin-test",
+                    "options": {
+                        "pluginPath": "dist/@iotize/device-com-socket.cordova"
+                    }
+                },
+                "coverage": {
+                    "builder": "@iotize-private/dev-tools-cli:nyc",
+                    "options": {
+                        "testCommand": "idtg project unit-test --noFork"
+                    }
+                },
+                "publish": {
+                    "builder": "@iotize-private/dev-tools-cli:npm-publish",
+                    "options": {}
+                }
+            }
+        }
+    }
+}

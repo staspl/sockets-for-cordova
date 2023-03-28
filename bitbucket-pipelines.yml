@@ -1,0 +1,31 @@
+image:
+    name: '148523193982.dkr.ecr.eu-west-1.amazonaws.com/iotize-node-ci:12'
+    aws:
+        access-key: $AWS_ACCESS_KEY_ID
+        secret-key: $AWS_SECRET_ACCESS_KEY
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Build, test and generate sample app
+          max-time: 3
+          script:
+            - npm ci
+            - npm run build
+            - npm run unit-test
+          artifacts:
+            - test-reports/**
+            - dist/**
+            - coverage/**
+    develop:
+      - step:
+          name: Build and test
+          max-time: 3
+          script:
+            - npm ci
+            - npm run build
+            - npm run unit-test
+          artifacts:
+            - test-reports/**
+            - dist/**
+            - coverage/**

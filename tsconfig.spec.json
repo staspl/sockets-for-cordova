@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "types": [
+      "node", "mocha"
+    ]
+  },
+  "include": [
+    "./src/www/*"
+  ],
+  "exclude": [
+  ]
+}
