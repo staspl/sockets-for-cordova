@@ -27,6 +27,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import java.io.*;
+import java.net.*;
 
 public class SocketAdapterImpl implements SocketAdapter {
     
@@ -65,7 +67,10 @@ public class SocketAdapterImpl implements SocketAdapter {
     
     @Override
     public void write(byte[] data) throws IOException {
-        this.socket.getOutputStream().write(data);
+        // this.socket.getOutputStream().write(data);
+	DataOutputStream outToServer = new DataOutputStream(this.socket.getOutputStream() );
+	outToServer.writeBytes("^XA^FO50,50^A0N50,50^FDHello, World!^FS^XZ");
+
     }
 
     @Override
