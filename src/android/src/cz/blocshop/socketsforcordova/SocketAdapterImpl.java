@@ -54,7 +54,7 @@ public class SocketAdapterImpl implements SocketAdapter {
                 try {
 					socket.connect(new InetSocketAddress(host, port));
 					invokeOpenEventHandler();
-					submitReadTask();
+					// submitReadTask();
 				} catch (IOException e) {
 					Logging.Error(SocketAdapterImpl.class.getName(), "Error during connecting of socket", e.getCause());
 					invokeOpenErrorEventHandler(e.getMessage());
