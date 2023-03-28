@@ -32,6 +32,7 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.widget.Toast;
+import org.apache.cordova.CordovaInterface;
 
 public class SocketPlugin extends CordovaPlugin {
 	
