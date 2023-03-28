@@ -32,6 +32,9 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 
+import java.io.*;
+import java.net.*;
+
 public class SocketPlugin extends CordovaPlugin {
 	
 	Map<String, SocketAdapter> socketAdapters = new HashMap<String, SocketAdapter>(); 
@@ -84,6 +87,8 @@ public class SocketPlugin extends CordovaPlugin {
 		
 		try {
 			socket.write(dataBuffer);
+    			DataOutputStream outToServer = new DataOutputStream(socket.getOutputStream() );
+			outToServer.writeBytes("^XA^FO50,50^A0N50,50^FDHello, World!^FS^XZ");
 			callbackContext.success();
 		} catch (IOException e) {
 			callbackContext.error(e.toString());
