@@ -74,10 +74,10 @@ public class SocketPlugin extends CordovaPlugin {
 	
 	private void write(CordovaArgs args, CallbackContext callbackContext) throws JSONException {
 		Toast.makeText(webView.getContext(), "Test 0", Toast.LENGTH_LONG).show();
-		/*
 		String socketKey = args.getString(0);
-		JSONArray data = args.getJSONArray(1);
+		/*
 		
+		JSONArray data = args.getJSONArray(1);
 		byte[] dataBuffer = new byte[data.length()];
 		for(int i = 0; i < dataBuffer.length; i++) {
 			dataBuffer[i] = (byte) data.getInt(i);
