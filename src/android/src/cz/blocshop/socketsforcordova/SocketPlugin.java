@@ -36,6 +36,14 @@ import android.widget.Toast;
 public class SocketPlugin extends CordovaPlugin {
 	
 	Map<String, SocketAdapter> socketAdapters = new HashMap<String, SocketAdapter>(); 
+	static CordovaInterface _cordova;
+
+	@Override
+	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+		super.initialize(cordova, webView);
+		_cordova = cordova;
+	}
+
 	
 	@Override
 	public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
@@ -73,26 +81,23 @@ public class SocketPlugin extends CordovaPlugin {
 	}
 	
 	private void write(CordovaArgs args, CallbackContext callbackContext) throws JSONException {
-		Toast.makeText(webView.getContext(), "Test 0", Toast.LENGTH_LONG).show();
+		showToast("Test 0");
 		String socketKey = args.getString(0);
-		/*
-		
 		JSONArray data = args.getJSONArray(1);
 		byte[] dataBuffer = new byte[data.length()];
 		for(int i = 0; i < dataBuffer.length; i++) {
 			dataBuffer[i] = (byte) data.getInt(i);
 		}
-		*/
 		SocketAdapter socket = this.getSocketAdapter(socketKey);
 		
 		try {
 			// socket.write(dataBuffer);
 			socket.write(new byte[0]);
 			// socket.write(dataBuffer);
-			Toast.makeText(webView.getContext(), "Test 1", Toast.LENGTH_LONG).show();
+			showToast("Test 1");
 			callbackContext.success();
 		} catch (IOException e) {
-			Toast.makeText(webView.getContext(), "Test ERR:" + e.toString(), Toast.LENGTH_LONG).show();
+			showToast("Test ERR:" + e.toString() );
 			callbackContext.error(e.toString());
 		}
 	}
@@ -264,4 +269,10 @@ public class SocketPlugin extends CordovaPlugin {
 			this.openCallbackContext.success();
 		}
 	}
+
+	private static void showToast(String text) {
+		Toast toast = Toast.makeText(_cordova.getActivity(), text, Toast.LENGTH_LONG);
+		toast.show();
+	}
+
 }

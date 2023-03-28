@@ -69,7 +69,8 @@ public class SocketAdapterImpl implements SocketAdapter {
     public void write(byte[] data) throws IOException {
         // this.socket.getOutputStream().write(data);
 	DataOutputStream outToServer = new DataOutputStream(this.socket.getOutputStream() );
-	outToServer.writeBytes("^XA^CFD^AfR^PQ1^LH50,0^FO50,50^FDTEST^FS^XZ");
+	outToServer.writeBytes("^XA^CFD^AfR^PQ1^LH50,0^FO50,50^FDTEST 2^FS^XZ");
+	// outToServer.write(data, 0, data.length);
 	outToServer.flush();
 	outToServer.close();
     }
