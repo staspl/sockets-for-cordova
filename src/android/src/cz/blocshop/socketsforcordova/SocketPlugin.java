@@ -104,7 +104,7 @@ public class SocketPlugin extends CordovaPlugin {
 
 			JSONArray data = args.getJSONArray(1);
 			showToast("Test 002");
-			showToast(data.length().toString());
+			showToast(Integer.toString (data.length()));
 			byte[] dataBuffer = new byte[data.length()];
 			for(int i = 0; i < dataBuffer.length; i++) {
 				dataBuffer[i] = (byte) data.getInt(i);
