@@ -88,11 +88,13 @@ public class SocketPlugin extends CordovaPlugin {
 		showToast("Test 00");
 		String socketKey = args.getString(0);
 		showToast("Test 001");
+		/*
 		JSONArray data = args.getJSONArray(1);
 		byte[] dataBuffer = new byte[data.length()];
 		for(int i = 0; i < dataBuffer.length; i++) {
 			dataBuffer[i] = (byte) data.getInt(i);
 		}
+		*/
 		showToast("Test 01");
 		SocketAdapter socket = this.getSocketAdapter(socketKey);
 		
