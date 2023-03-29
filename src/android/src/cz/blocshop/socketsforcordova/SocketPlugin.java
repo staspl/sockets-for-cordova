@@ -84,27 +84,38 @@ public class SocketPlugin extends CordovaPlugin {
 	
 	private void write(CordovaArgs args, CallbackContext callbackContext) throws JSONException {
 		try {
-		showToast("Test 0");
-		showToast("Test 00");
-		String socketKey = args.getString(0);
-		showToast("Test 001");
-		/*
-		JSONArray data = args.getJSONArray(1);
-		byte[] dataBuffer = new byte[data.length()];
-		for(int i = 0; i < dataBuffer.length; i++) {
-			dataBuffer[i] = (byte) data.getInt(i);
-		}
-		*/
-		showToast("Test 01");
-		SocketAdapter socket = this.getSocketAdapter(socketKey);
-		
-			// socket.write(dataBuffer);
+			String socketKey = args.getString(0);
+			SocketAdapter socket = this.getSocketAdapter(socketKey);
+			showToast("Test 001 Socket=" + socketKey);
+
+			try {
+				Object o = args.getJSONObject(1);
+				showToast("o class=" + o.getClass().getName());
+				if ( o instanceof String ) {
+					socket.writeText(o.toString());
+					showToast("Test 1");
+					callbackContext.success();
+					return;
+				}
+			} catch (Exception e) {
+				showToast("Test1 ERR:" + e.toString() );
+			}
+
+
+			JSONArray data = args.getJSONArray(1);
+			showToast("Test 002");
+			showToast(data.length());
+			byte[] dataBuffer = new byte[data.length()];
+			for(int i = 0; i < dataBuffer.length; i++) {
+				dataBuffer[i] = (byte) data.getInt(i);
+			}
+	
+			showToast("Test 01" );
+			
+			socket.write(dataBuffer);
 			showToast("Test 02");
-			socket.write(new byte[0]);
-			// socket.write(dataBuffer);
-			showToast("Test 1");
 			callbackContext.success();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			showToast("Test ERR:" + e.toString() );
 			callbackContext.error(e.toString());
 		}
