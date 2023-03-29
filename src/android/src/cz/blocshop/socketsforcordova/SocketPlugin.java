@@ -86,10 +86,11 @@ public class SocketPlugin extends CordovaPlugin {
 		try {
 			String socketKey = args.getString(0);
 			SocketAdapter socket = this.getSocketAdapter(socketKey);
-			showToast("Test 001 Socket=" + socketKey);
+			// showToast("Test 001 Socket=" + socketKey);
 
 			try {
-				Object o = args.getJSONObject(1);
+				// Object o = args.getJSONObject(1);
+				Object o = args.get(1);
 				showToast("o class=" + o.getClass().getName());
 				if ( o instanceof String ) {
 					socket.writeText(o.toString());
